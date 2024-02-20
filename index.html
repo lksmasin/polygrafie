@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Řezy tiskoviny</title>
+</head>
+<body>
+<h1>Řezy tiskoviny</h1>
+
+<div>
+  <label for="sirka_formatu">Šířka čistého formátu (mm):</label>
+  <input type="text" id="sirka_formatu">
+</div>
+<div>
+  <label for="vyska_formatu">Výška čistého formátu (mm):</label>
+  <input type="text" id="vyska_formatu">
+</div>
+<div>
+  <label for="sirka_tiskoviny">Šířka tiskoviny (mm):</label>
+  <input type="text" id="sirka_tiskoviny">
+</div>
+<div>
+  <label for="vyska_tiskoviny">Výška tiskoviny (mm):</label>
+  <input type="text" id="vyska_tiskoviny">
+</div>
+<div>
+  <label for="okraj_levy">Velikost levého okraje (mm):</label>
+  <input type="text" id="okraj_levy">
+</div>
+<div>
+  <label for="okraj_horni">Velikost horního okraje (mm):</label>
+  <input type="text" id="okraj_horni">
+</div>
+<div>
+  <label for="spadavka">Velikost spadávky (mm):</label>
+  <input type="text" id="spadavka">
+</div>
+<button onclick="calculate()">Spočítat řezy</button>
+
+<div id="results"></div>
+
+<script>
+function calculate() {
+  var sirka_formatu = parseFloat(document.getElementById("sirka_formatu").value);
+  var vyska_formatu = parseFloat(document.getElementById("vyska_formatu").value);
+  var sirka_tiskoviny = parseFloat(document.getElementById("sirka_tiskoviny").value);
+  var vyska_tiskoviny = parseFloat(document.getElementById("vyska_tiskoviny").value);
+  var okraj_levy = parseFloat(document.getElementById("okraj_levy").value);
+  var okraj_horni = parseFloat(document.getElementById("okraj_horni").value);
+  var spadavka = parseFloat(document.getElementById("spadavka").value);
+
+  var rez_levy = [];
+  rez_levy.push(sirka_formatu - okraj_levy);
+  for (var i = 1; i <= parseInt(sirka_tiskoviny / spadavka); i++) {
+    var new_rez = rez_levy[rez_levy.length - 1] - sirka_tiskoviny;
+    if (new_rez <= 0) break;
+    rez_levy.push(new_rez);
+    var new_spadavka = rez_levy[rez_levy.length - 1] - spadavka;
+    if (new_spadavka <= 0) break;
+    rez_levy.push(new_spadavka);
+  }
+
+  var rez_horni = [];
+  rez_horni.push(vyska_formatu - okraj_horni);
+  for (var i = 1; i <= parseInt(vyska_tiskoviny / spadavka); i++) {
+    var new_rez = rez_horni[rez_horni.length - 1] - vyska_tiskoviny;
+    if (new_rez <= 0) break;
+    rez_horni.push(new_rez);
+    var new_spadavka = rez_horni[rez_horni.length - 1] - spadavka;
+    if (new_spadavka <= 0) break;
+    rez_horni.push(new_spadavka);
+  }
+
+  var output = "<h2>Řezy z levé strany:</h2>";
+  for (var i = 0; i < rez_levy.length; i++) {
+    if (rez_levy[i] <= 0) break;
+    output += "<p>" + (i + 1) + ". Řez: " + rez_levy[i].toFixed(2) + " mm</p>";
+  }
+
+  output += "<h2>Řezy z horní strany:</h2>";
+  for (var i = 0; i < rez_horni.length; i++) {
+    if (rez_horni[i] <= 0) break;
+    output += "<p>" + (i + 1) + ". Řez: " + rez_horni[i].toFixed(2) + " mm</p>";
+  }
+
+  document.getElementById("results").innerHTML = output;
+}
+</script>
+
+</body>
+</html>
