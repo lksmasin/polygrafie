@@ -1,0 +1,78 @@
+// @use 'node_modules/@material/web/color/color';
+@use 'css/colors.module.css';
+@use 'css/theme.css';
+@use 'css/tokens.css';
+@use 'css/typography.module.css';
+@use 'node_modules/@material/web/color/color';
+
+@import url('https://fonts.googleapis.com/css2?family=Open%20Sans:wght@400;500;700&display=swap');
+
+
+:root {
+  @media (prefers-color-scheme: dark) {
+    @include color.dark-theme;
+    --md-sys-color-primary: #9fd67b;
+    --md-sys-color-on-primary: #153800;
+    --md-sys-color-primary-container: #235103;
+    --md-sys-color-on-primary-container: #baf294;
+    --md-sys-color-secondary: #bdcbaf;
+    --md-sys-color-secondary-container: #283420;
+    --md-sys-color-on-secondary-container: #d9e7cb;
+    --md-sys-color-tertiary: #a0cfcf;
+    --md-sys-color-tertiary-container: #1e4e4e;
+    --md-sys-color-outline: #43483e;
+    --md-sys-color-on-background: #e3e3dc;
+  }
+  @media (prefers-color-scheme: light) {
+    @include color.light-theme;
+    --md-sys-color-primary: #396a1f;
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-primary-container: #b9f396;
+    --md-sys-color-on-primary-container: #082100;
+    --md-sys-color-secondary: #55624c;
+    --md-sys-color-secondary-container: #d9e7cb;
+    --md-sys-color-on-secondary-container: #131f0d;
+    --md-sys-color-tertiary: #386666;
+    --md-sys-color-tertiary-container: #bbebeb;
+    --md-sys-color-outline: #74796d;
+  }
+  --md-sys-typescale-body-medium-size: 1rem;
+  --md-sys-typescale-body-medium-line-height: 1.5rem;
+  --md-ref-typeface-brand: 'Open Sans';
+  --md-ref-typeface-plain: system-ui;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+body {
+  @media (prefers-color-scheme: dark) {
+    background-color: #1a1c18;
+    color: #e3e3dc;
+  }
+  @media (prefers-color-scheme: light) {
+    background-color: #fdfdf5;
+    color: #1a1c18;
+  }
+  font-family: 'Open Sans';
+  padding-left: 15px;
+  --md-sys-typescale-body-medium-size: 1rem;
+  --md-sys-typescale-body-medium-line-height: 1.5rem;
+}
+
+md-outlined-text-field {
+  margin-top: 10px;
+}
+
+md-list {
+  border-radius: 8px;
+  outline: 1px solid var(--md-sys-color-outline);
+  max-width: 360px;
+  overflow: hidden;
+  width: 100%;
+}

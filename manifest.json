@@ -1,0 +1,44 @@
+{
+    "lang": "cs-CZ",
+    "name": "Počítání řezů",
+    "short_name": "Počítání řezů",
+    "description": "Nástoj na autoamtické vypočítání řezů při řezu na řezačce",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#fdfdf5",
+    "theme_color": "#396a1f",
+    "icons": [
+        {
+            "src": "/icons/icon-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/screenshots/screenshot01.png",
+            "sizes": "1080x2096",
+            "type": "image/png"
+        },
+        {
+            "src": "/screenshots/screenshot02.png",
+            "sizes": "1080x2088",
+            "type": "image/png"
+        },
+        {
+            "src": "/screenshots/screenshot03.png",
+            "sizes": "1080x2083",
+            "type": "image/png"
+        },
+        {
+            "src": "/screenshots/screenshot04.png",
+            "sizes":"1080x2097",
+            "type": "image/png"
+        }
+    ]
+}
