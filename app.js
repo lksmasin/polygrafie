@@ -18,7 +18,7 @@ document.getElementById("calculatorForm").addEventListener("submit", function(ev
     document.getElementById('levy_info').innerHTML = `
         <md-list-item>Otočit</md-list-item>
         <md-divider></md-divider>
-        <md-list-item>Šířka tiskoviny: ${sirkaTiskoviny}</md-list-item>
+        <md-list-item>Poslední řez: ${sirkaTiskoviny}</md-list-item>
     `;
     
     let horni = horniRezy(vyskaFormatu, vyskaTiskoviny, okrajHorni, spadavka);
@@ -26,7 +26,7 @@ document.getElementById("calculatorForm").addEventListener("submit", function(ev
     document.getElementById('horni_info').innerHTML = `
         <md-list-item>Otočit</md-list-item>
         <md-divider></md-divider>
-        <md-list-item>Výška tiskoviny: ${vyskaTiskoviny}</md-list-item>
+        <md-list-item>Poslední řez: ${vyskaTiskoviny}</md-list-item>
     `;
 });
 
