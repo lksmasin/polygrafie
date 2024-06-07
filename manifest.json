@@ -1,8 +1,8 @@
 {
     "lang": "cs-CZ",
-    "name": "Počítání řezů",
-    "short_name": "Počítání řezů",
-    "description": "Nástoj na autoamtické vypočítání řezů při řezu na řezačce",
+    "name": "Polygrafické nástroje",
+    "short_name": "Polygrafické nástroje",
+    "description": "Nástroje pro polygrafii: řezání, počítání kusů papíru, počítání cen..",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#fdfdf5",
