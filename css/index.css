@@ -751,6 +751,9 @@
     --md-sys-color-tertiary-container: #1e4e4e;
     --md-sys-color-outline: #43483e;
     --md-sys-color-on-background: #e3e3dc;
+    --md-sys-color-surface: #11140e;
+    --md-sys-color-on-surface: #e1e4d9;
+    --md-sys-color-on-surface-variant: #c4c8bb;
   }
 }
 @media (prefers-color-scheme: light) {
@@ -814,6 +817,9 @@
     --md-sys-color-tertiary: #386666;
     --md-sys-color-tertiary-container: #bbebeb;
     --md-sys-color-outline: #74796d;
+    --md-sys-color-surface: #f8faf0;
+    --md-sys-color-on-surface: #191d16;
+    --md-sys-color-on-surface-variant: #43483e;
   }
 }
 
@@ -880,9 +886,10 @@ md-list {
   align-items: center; /* Vertikální centrování */
 }
 
-#tlacitka-info-install {
+#tlacitka {
   display: flex;
   align-items: center;
+  padding-right: 15px;
 }
 
 #install-button {
@@ -891,28 +898,8 @@ md-list {
   margin-bottom: 0px;
 }
 
-#vyber {
-  display: flex;
-}
-
-#vyber-box {
+.Vyber {
   margin-top: 45px;
-  height: 120px;
-  width: 120px;
-  max-width: 500px;
-  margin-right: 15px;
-  margin-bottom: 35px;
-  border-radius: 10px;
-}
-@media (prefers-color-scheme: dark) {
-  #vyber-box {
-    background-color: #283420;
-  }
-}
-@media (prefers-color-scheme: light) {
-  #vyber-box {
-    background-color: #b9f396;
-  }
 }
 
 /*# sourceMappingURL=index.css.map */

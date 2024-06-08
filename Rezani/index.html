@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="icon" href="icons/icon-192x192.png">
     <script type="module" src="app.js"></script>
     <script src="../js/bundle.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -12,9 +11,6 @@
 </head>
 
 <script>
-    function showPopup() {
-        alert("Nejsem zodpovědný za problémy vziklé používáním tohoto nástoje! :P");
-    }
     function toggleNapoveda() {
         var element = document.getElementById("napoveda");
         if (element.style.display === "none") {
@@ -25,7 +21,7 @@
     }
 </script>
 
-<body onload="showPopup()">
+<body>
 
     <h1>Počítání řezů <md-icon slot="leading-icon">design_services</md-icon></h1>
 
@@ -34,8 +30,14 @@
 
     </script>
 
-    <div id="tlacitka-info-install">
+    <div id="tlacitka">
+
+        <md-outlined-icon-button href="/">
+          <md-icon>arrow_back</md-icon>
+        </md-outlined-icon-button>
+
         <md-outlined-button onclick="toggleNapoveda()">Nápověda a Informace</md-outlined-button>
+
     </div>
 
     <br>
