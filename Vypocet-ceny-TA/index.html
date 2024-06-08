@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Výpočet ceny papíru</title>
+	<link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <h1>Výpočet ceny papíru</h1>
+    <div class="form-group">
+        <label for="ta1mm">Šířka tiskového archu (mm):</label>
+        <input type="number" id="ta1mm" min="0" step="0.01">
+    </div>
+    <div class="form-group">
+        <label for="ta2mm">Výška tiskového archu (mm):</label>
+        <input type="number" id="ta2mm" min="0" step="0.01">
+    </div>
+    <div class="form-group">
+        <label for="plohm">Plošná hmotnost (g/m²):</label>
+        <input type="number" id="plohm" min="0" step="0.01">
+    </div>
+    <div class="form-group">
+        <label for="pocta">Počet tiskových archů (ks):</label>
+        <input type="number" id="pocta" min="0" step="1">
+    </div>
+    <div class="form-group">
+        <label for="cenpap">Cena papíru (Kč/Kg):</label>
+        <input type="number" id="cenpap" min="0" step="0.01">
+    </div>
+    <button onclick="PocitatCenu()">Vypočítat cenu</button>
+    <div class="result" id="result"></div>
+
+    <script>
+        function PocitatCenu() {
+            const ta1mm = parseFloat(document.getElementById('ta1mm').value) || 0;
+            const ta2mm = parseFloat(document.getElementById('ta2mm').value) || 0;
+            const plohm = parseFloat(document.getElementById('plohm').value) || 0;
+            const pocta = parseInt(document.getElementById('pocta').value) || 0;
+            const cenpap = parseFloat(document.getElementById('cenpap').value) || 0;
+
+            let ta1m = ta1mm / 1000;
+            let ta2m = ta2mm / 1000;
+            let obsTA = ta1m * ta2m;
+            let vysl1 = obsTA * pocta;
+            let vysl2 = vysl1 * plohm;
+            let vysl3 = vysl2 / 1000;
+            let vyslednaCena = Math.ceil(vysl3 * cenpap);
+
+            document.getElementById('result').innerText = `Výsledná cena: ${vyslednaCena.toFixed(2)} Kč`;
+        }
+    </script>
+</body>
+</html>

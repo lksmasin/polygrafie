@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="icon" href="icons/icon-192x192.png">
+    <script type="module" src="app.js"></script>
+    <script src="../js/bundle.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Počítání řezů</title>
+</head>
+
+<script>
+    function showPopup() {
+        alert("Nejsem zodpovědný za problémy vziklé používáním tohoto nástoje! :P");
+    }
+    function toggleNapoveda() {
+        var element = document.getElementById("napoveda");
+        if (element.style.display === "none") {
+            element.style.display = "block";
+        } else {
+            element.style.display = "none";
+        }
+    }
+</script>
+
+<body onload="showPopup()">
+
+    <h1>Počítání řezů <md-icon slot="leading-icon">design_services</md-icon></h1>
+
+    <!-- Nápověda a Informace -->
+    <script>
+
+    </script>
+
+    <div id="tlacitka-info-install">
+        <md-outlined-button onclick="toggleNapoveda()">Nápověda a Informace</md-outlined-button>
+    </div>
+
+    <br>
+    <br>
+    <div id="napoveda">
+        <div id="napoveda-text">
+            <p>Tento nástoj slouží pro rychlé vypočítání řezů.<br>Stačí vypnit požadované pole a zobrazí se výsledky.<br>Využívej pouze s dovolením vyuučujícího.<br>Nástroj vytvořil lukymas</p>
+        </div>
+    </div>
+
+    
+
+    <form id="calculatorForm">
+        <md-outlined-text-field label="Šířka čistého formátu:" type="number"
+            name="sirkaFormatu" id="sirkaFormatu" required
+            suffix-text="mm">
+        </md-outlined-text-field><br>
+        
+        <md-outlined-text-field label="Výška čistého formátu:" type="number"
+            name="vyskaFormatu" id="vyskaFormatu" required
+            suffix-text="mm">
+        </md-outlined-text-field><br>
+
+        <md-outlined-text-field label="Šířka tiskoviny:" type="number"
+            name="sirkaTiskoviny" id="sirkaTiskoviny" required
+            suffix-text="mm">
+        </md-outlined-text-field><br>
+
+        <md-outlined-text-field label="Výška tiskoviny:" type="number"
+            name="vyskaTiskoviny" id="vyskaTiskoviny" required
+            suffix-text="mm">
+        </md-outlined-text-field><br>
+
+        <md-outlined-text-field label="Okraj z levé strany:" type="number"
+        name="okrajLevy" id="okrajLevy" required
+        suffix-text="mm">
+        </md-outlined-text-field><br>
+
+        <md-outlined-text-field label="Okraj z horní strany:" type="number"
+            name="okrajHorni" id="okrajHorni" required
+            suffix-text="mm">
+        </md-outlined-text-field><br>
+
+        <md-outlined-text-field label="Spadávka:" type="number"
+            name="spadavka" id="spadavka" value="4" required
+            suffix-text="mm">
+        </md-outlined-text-field>
+        <br>
+        <br>
+
+        
+        <md-filled-button>Vypočítat</md-filled-button>
+    </form>
+
+    <h2>Výsledek:</h2>
+    <h3>Řezy z levé strany:</h3>
+    <div id="levy_rezy"></div>
+    <div id="levy_info"></div>
+    <h3>Řezy z horní strany:</h3>
+    <div id="horni_rezy"></div>
+    <div id="horni_info"></div>
+
+</body>
+</html>

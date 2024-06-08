@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Polygrafické nástroje</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="./css/index.css">
+	<link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+</head>
+
+<body>
+
+<script>
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const installButton = document.getElementById('install-button');
+    installButton.style.display = 'block';
+    installButton.addEventListener('click', () => {
+      installButton.style.display = 'none';
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        deferredPrompt = null;
+      });
+    });
+  });
+
+  window.addEventListener('appinstalled', (evt) => {
+    console.log('App was successfully installed');
+  });
+</script>
+
+
+  <div class="Uvod">
+    <h1>Polygrafické nástroje <md-icon slot="leading-icon">design_services</md-icon> </h1>
+    <div id="tlacitka-info-install">
+        <md-outlined-button onclick="toggleNapoveda()">Nápověda a Informace</md-outlined-button>
+        <div id="install-button">
+            <md-filled-tonal-button>Instalovat</md-filled-tonal-button>
+        </div>
+    </div>
+  </div>
+
+
+  <div id="vyber">
+    <div id="vyber-box"></div>
+    <div id="vyber-box"></div>
+    <div id="vyber-box"></div>
+  </div>
+
+
+  <script type="module" src="./index.js"></script>
+
+  <script src="./js/bundle.js"></script>
+
+  <script>
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js');š
+    }
+  </script>
+
+</body>
+</html> 
