@@ -1,7 +1,3 @@
-function showPopup() {
-    alert("Nejsem zodpovědný za problémy vziklé používáním tohoto nástoje! :P");
-}
-
 document.getElementById("calculatorForm").addEventListener("submit", function(event) {
     event.preventDefault();
 

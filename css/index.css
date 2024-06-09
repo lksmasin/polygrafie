@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url(tokens.css);
 @import url(colors.module.css);
 @import url(typography.module.css);
@@ -750,6 +751,9 @@
     --md-sys-color-tertiary-container: #1e4e4e;
     --md-sys-color-outline: #43483e;
     --md-sys-color-on-background: #e3e3dc;
+    --md-sys-color-surface: #11140e;
+    --md-sys-color-on-surface: #e1e4d9;
+    --md-sys-color-on-surface-variant: #c4c8bb;
   }
 }
 @media (prefers-color-scheme: light) {
@@ -813,6 +817,9 @@
     --md-sys-color-tertiary: #386666;
     --md-sys-color-tertiary-container: #bbebeb;
     --md-sys-color-outline: #74796d;
+    --md-sys-color-surface: #f8faf0;
+    --md-sys-color-on-surface: #191d16;
+    --md-sys-color-on-surface-variant: #43483e;
   }
 }
 
@@ -851,4 +858,45 @@ md-list {
   width: 100%;
 }
 
-/*# sourceMappingURL=style.css.map */
+#vyskakovaci-okenko, #vyskakovaci-okenko-info, #vyskakovaci-okenko-napoveda {
+  display: none;
+  height: auto;
+  width: auto;
+  max-width: 500px;
+  margin-top: 50px;
+  margin-right: 15px;
+  margin-bottom: 35px;
+  border-radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  #vyskakovaci-okenko, #vyskakovaci-okenko-info, #vyskakovaci-okenko-napoveda {
+    background-color: #283420;
+  }
+}
+@media (prefers-color-scheme: light) {
+  #vyskakovaci-okenko, #vyskakovaci-okenko-info, #vyskakovaci-okenko-napoveda {
+    background-color: #b9f396;
+  }
+}
+
+#vyskakovaci-text {
+  font-size: 11pt;
+  text-align: center;
+  display: flex;
+  justify-content: center; /* Horizontální centrování */
+  align-items: center; /* Vertikální centrování */
+}
+
+#tlacitka {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 45px;
+}
+
+#install-button {
+  display: none;
+  margin-bottom: 0px;
+}
+
+/*# sourceMappingURL=index.css.map */
