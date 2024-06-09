@@ -14,44 +14,85 @@
 
 <body>
 
-<script>
-  let deferredPrompt;
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    const installButton = document.getElementById('install-button');
-    installButton.style.display = 'block';
-    installButton.addEventListener('click', () => {
-      installButton.style.display = 'none';
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
+  <script>
+    function TlacInfo() {
+        var element = document.getElementById("vyskakovaci-okenko-info");
+        if (element.style.display === "none") {
+            element.style.display = "block";
         } else {
-          console.log('User dismissed the install prompt');
+            element.style.display = "none";
         }
-        deferredPrompt = null;
+    }
+  </script>
+
+  <script>
+    function TlacNapoveda() {
+        var element = document.getElementById("vyskakovaci-okenko-napoveda");
+        if (element.style.display === "none") {
+            element.style.display = "block";
+        } else {
+            element.style.display = "none";
+        }
+    }
+  </script>
+
+  <script>
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const installButton = document.getElementById('install-button');
+      installButton.style.display = 'block';
+      installButton.addEventListener('click', () => {
+        installButton.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          } else {
+            console.log('User dismissed the install prompt');
+          }
+          deferredPrompt = null;
+        });
       });
     });
-  });
 
-  window.addEventListener('appinstalled', (evt) => {
-    console.log('App was successfully installed');
-  });
-</script>
+    window.addEventListener('appinstalled', (evt) => {
+      console.log('App was successfully installed');
+    });
+  </script>
 
 
   <div class="Uvod">
     <h1>Polygrafické nástroje</h1>
     <div id="tlacitka">
 
-        <md-outlined-button onclick="toggleNapoveda()">Nápověda a Informace</md-outlined-button>
+        <md-outlined-button onclick="TlacInfo()">Informace</md-outlined-button>
+
+        <md-filled-tonal-button onclick="TlacNapoveda()">Nápověda</md-filled-tonal-button>
 
         <div id="install-button">
-            <md-filled-tonal-button>Instalovat</md-filled-tonal-button>
+            <md-filled-button>Instalovat</md-filled-button>
         </div>
 
     </div>
+
+    <div id="vyskakovaci-okenko-info">
+      <div id="vyskakovaci-text">
+        <p>
+        Nástoje pro automatizaci některých běžných polygrafických prací.
+        Webová stránka používá Material Design 3 a je jednoduchá na používání, jak na počítači tak i na telefonu.
+        Na Androidu (Chrome) je možné si stránku nainstalovat jako Progresivní Webovou Aplikaci a používat ji offline.
+        </p>
+      </div>
+    </div>
+
+    <div id="vyskakovaci-okenko-napoveda">
+      <div id="vyskakovaci-text">
+        <p>PWA si můžeš nainstalovat pomocí tlačítka vedle, pokud jej nevidíš máš smůlu. Zkus prohlížeš Google Chrome<br>Jestliže máš problémy nebo něčemu nerozumíš můžeš mě kontaktovat přes Instagram, link v zápatí stránky.</p>
+      </div>
+    </div>
+
   </div>
 
   <div class="Vyber">
@@ -77,13 +118,20 @@
         <md-icon slot="start">equal</md-icon>
       </md-list-item>
 
+      <md-divider></md-divider>
+
+      <md-list-item type="link" href="/Velikosti-papiru">
+        Velikosti papírů
+        <md-icon slot="start">article</md-icon>
+      </md-list-item>
+
     </md-list>
 
   </div>
 
   <script>
     if('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js');š
+      navigator.serviceWorker.register('./service-worker.js');š
     }
   </script>
 

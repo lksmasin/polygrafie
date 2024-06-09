@@ -858,27 +858,28 @@ md-list {
   width: 100%;
 }
 
-#napoveda {
+#vyskakovaci-okenko, #vyskakovaci-okenko-info, #vyskakovaci-okenko-napoveda {
   display: none;
-  height: 110px;
+  height: auto;
   width: auto;
   max-width: 500px;
+  margin-top: 50px;
   margin-right: 15px;
   margin-bottom: 35px;
   border-radius: 10px;
 }
 @media (prefers-color-scheme: dark) {
-  #napoveda {
+  #vyskakovaci-okenko, #vyskakovaci-okenko-info, #vyskakovaci-okenko-napoveda {
     background-color: #283420;
   }
 }
 @media (prefers-color-scheme: light) {
-  #napoveda {
+  #vyskakovaci-okenko, #vyskakovaci-okenko-info, #vyskakovaci-okenko-napoveda {
     background-color: #b9f396;
   }
 }
 
-#napoveda-text {
+#vyskakovaci-text {
   font-size: 11pt;
   text-align: center;
   display: flex;
@@ -889,17 +890,13 @@ md-list {
 #tlacitka {
   display: flex;
   align-items: center;
-  padding-right: 15px;
+  gap: 5px;
+  margin-bottom: 45px;
 }
 
 #install-button {
-  margin-left: 5px;
   display: none;
   margin-bottom: 0px;
-}
-
-.Vyber {
-  margin-top: 45px;
 }
 
 /*# sourceMappingURL=index.css.map */

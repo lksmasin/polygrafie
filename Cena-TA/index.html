@@ -4,39 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Výpočet ceny papíru</title>
+    <script src="../js/bundle.js"></script>
 	<link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script>
+        function toggleNapoveda() {
+            var element = document.getElementById("vyskakovaci-okenko");
+            if (element.style.display === "none") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Výpočet ceny papíru</h1>
-    <div class="form-group">
-        <label for="ta1mm">Šířka tiskového archu (mm):</label>
-        <input type="number" id="ta1mm" min="0" step="0.01">
+
+    <h1>Výpočet ceny papíru <md-icon slot="leading-icon">equal</md-icon></h1>
+
+
+    <div id="tlacitka">
+
+        <md-outlined-icon-button href="/">
+          <md-icon>arrow_back</md-icon>
+        </md-outlined-icon-button>
+
+        <md-outlined-button onclick="toggleNapoveda()">Nápověda</md-outlined-button>
+
     </div>
-    <div class="form-group">
-        <label for="ta2mm">Výška tiskového archu (mm):</label>
-        <input type="number" id="ta2mm" min="0" step="0.01">
+
+    <div id="vyskakovaci-okenko">
+        <div id="vyskakovaci-text">
+            <p>Tento nástoj slouží pro vypočítání ceny papírů.<br>Stačí vypnit požadované pole a zobrazí se výsledky.<br>Využívej pouze s dovolením vyuučujícího.</p>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="plohm">Plošná hmotnost (g/m²):</label>
-        <input type="number" id="plohm" min="0" step="0.01">
-    </div>
-    <div class="form-group">
-        <label for="pocta">Počet tiskových archů (ks):</label>
-        <input type="number" id="pocta" min="0" step="1">
-    </div>
-    <div class="form-group">
-        <label for="cenpap">Cena papíru (Kč/Kg):</label>
-        <input type="number" id="cenpap" min="0" step="0.01">
-    </div>
-    <button onclick="PocitatCenu()">Vypočítat cenu</button>
-    <div class="result" id="result"></div>
+
+    <md-outlined-text-field label="Šířka tiskového archu:" type="number"
+        name="ta1mm" id="ta1mm" required
+        suffix-text="mm">
+    </md-outlined-text-field><br>
+
+    <md-outlined-text-field label="Výška tiskového archu:" type="number"
+        name="ta2mm" id="ta2mm" required
+        suffix-text="mm">
+    </md-outlined-text-field><br>
+
+    <md-outlined-text-field label="Plošná hmotnost:" type="number"
+        name="plohm" id="plohm" required
+        suffix-text="g/m²">
+    </md-outlined-text-field><br>
+
+    <md-outlined-text-field label="Počet tiskových archů:" type="number"
+        name="pocta" id="pocta" required
+        suffix-text="ks">
+    </md-outlined-text-field><br>
+
+    <md-outlined-text-field label="Cena papíru:" type="number"
+        name="cenpap" id="cenpap" required
+        suffix-text="Kč/Kg">
+    </md-outlined-text-field><br>
+    <br>
+    <br>
+
+    <md-filled-button onclick="PocitatCenu()">Vypočítat cenu</md-filled-button>
+
+    <h3 class="result" id="result"></h3>
 
     <script>
         function PocitatCenu() {
             const ta1mm = parseFloat(document.getElementById('ta1mm').value) || 0;
             const ta2mm = parseFloat(document.getElementById('ta2mm').value) || 0;
             const plohm = parseFloat(document.getElementById('plohm').value) || 0;
-            const pocta = parseInt(document.getElementById('pocta').value) || 0;
+            const pocta = parseFloat(document.getElementById('pocta').value) || 0;
             const cenpap = parseFloat(document.getElementById('cenpap').value) || 0;
 
             let ta1m = ta1mm / 1000;
@@ -45,7 +84,7 @@
             let vysl1 = obsTA * pocta;
             let vysl2 = vysl1 * plohm;
             let vysl3 = vysl2 / 1000;
-            let vyslednaCena = Math.ceil(vysl3 * cenpap);
+            let vyslednaCena = vysl3 * cenpap;
 
             document.getElementById('result').innerText = `Výsledná cena: ${vyslednaCena.toFixed(2)} Kč`;
         }
